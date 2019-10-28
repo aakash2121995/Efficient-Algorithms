@@ -4,39 +4,23 @@ import math
 first_line = sys.stdin.readline()
 n = int(first_line)
 
-grid_l,grid_r = sys.stdin.readline().split('.')
-grid_size = 100*int(grid_l)+int(grid_r)
-
-# print("grid size ",grid_size)
+grid_size = sys.stdin.readline()
+grid_size = int(grid_size.replace('.',''))
 
 for i in range(n):
 	line = sys.stdin.readline()
 	x,y  = line.split()
+	x = int(x.replace('.',''))
+	y = int(y.replace('.',''))
 
-	x_l,x_r = x.split('.')
-	y_l,y_r = y.split('.')
 
-	if '-' in x_l:
-		x = 100*int(x_l) - int(x_r)
-	else:
-		x = 100*int(x_l) + int(x_r)
+	x_coord = int(x / grid_size)
+	if x < 0:
+		x_coord -= 1
 
-	if '-' in y_l:
-		y = 100*int(y_l) - int(y_r)
-	else:
-		y = 100*int(y_l) + int(y_r)
-
-	# print("x ",x," y ", y)
-
-	if (x % grid_size == 0 or x >= 0):
-		x_coord = int(x / grid_size)
-	else:
-		x_coord = int(x / grid_size) - 1;
-
-	if (y % grid_size == 0 or y >= 0):
-		y_coord = int(y / grid_size);
-	else:
-		y_coord = int(y / grid_size) - 1;
+	y_coord = int(y / grid_size);
+	if y < 0:
+		y_coord -= 1
 
 	x_normal =abs(int(grid_size*x_coord/100));
 	x_frac =abs(grid_size*x_coord )%100;
