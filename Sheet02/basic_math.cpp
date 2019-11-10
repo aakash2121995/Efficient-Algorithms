@@ -22,36 +22,21 @@ int main(int argc, char const *argv[])
 
 		// code for finding factors
 		int start = 1,step_size=1;
-
-		// if(v%2 == 1){
-		// 	start = 3;
-		// 	step_size = 2;
-		// }
 		vector<int> factors,factors_large;
-		// factors.push_back(1);
 		int sqrt_root = sqrt(v);
 		for (int factor = start; factor <= sqrt_root; factor+=step_size)
 		{
-			// cout<<factor<<' ';
 			if(v%factor == 0){
 				factors.push_back(factor);
 				if(v/factor <= max_factor && factor*factor !=v)
 					factors_large.push_back(v/factor);
 			}
 		}
-		// if(v%sqrt_root== 0){
-		// 	factors.push_back(sqrt_root);
-		// 	if(sqrt_root*sqrt_root != v)
-		// 		factors.push_back(v/sqrt_root);
-		// }
-		// ends here
 
 		reverse(factors_large.begin(),factors_large.end());  
 		factors.insert(factors.end(), factors_large.begin(),factors_large.end());
 
 		bool found = false;
-		// for (int k = 0; k < factors.size(); ++k)
-		// 	cout<<factors[k]<<' ';
 
 		for (int k = 0; k < factors.size() - 2; ++k)
 		{
